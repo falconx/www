@@ -21,12 +21,6 @@
   font-size: 16px;
 }
 
-@media screen and (min-width: 1440px) {
-  :root {
-    font-size: 22px;
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -51,13 +45,19 @@ body::-webkit-scrollbar-thumb {
   background-color: #e677ad;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 1em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
   margin: 0;
 }
 
 img {
   height: auto;
+  max-width: 100%;
 }
 
 main {
@@ -81,7 +81,6 @@ em {
 
 p {
   margin: 0;
-  margin-bottom: 1em;
 }
 
 a {
@@ -125,16 +124,4 @@ select:hover {
 
 option {
   color: #000;
-}
-
-.gatsby-resp-image-link {
-  margin: 1em 0 !important;
-}
-
-.gatsby-resp-image-image {
-  box-shadow: none !important;
-}
-
-.gatsby-resp-image-wrapper {
-  margin-left: 0 !important;
 }

@@ -1,40 +1,237 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import styled from 'styled-components';
 
-import styles from './project.module.css';
+import Layout from '../components/Layout';
+import Header from '../components/Header';
+import ProjectList from '../components/ProjectList';
 
-import Layout from '../components/layout';
-import Header from '../components/header';
+const LAYOUT_FULL_WIDTH = 'WordPressAcf_full_width';
+const LAYOUT_HALF_HALF = 'WordPressAcf_half_half';
+const LAYOUT_TWO_THIRDS_ONE_THIRD = 'WordPressAcf_two_thirds_one_third';
 
+const S = {};
+
+S.Project = styled.div`
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto 40px;
+`;
+
+S.Title = styled.h2`
+  margin-bottom: 1em;
+`;
+
+S.Content = styled.div`
+  line-height: 1.5;
+
+  [class^="col-"] {
+    margin: 30px 0;
+  }
+`;
+
+S.Column = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > * + * {
+    margin-top: 30px;
+  }
+`;
+
+// "Ignore" hack added as a workaround to https://github.com/gatsbyjs/gatsby/issues/15707
 export const query = graphql`
-  query PostQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
+  query($id: String!) {
+    allWordpressTag {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+    wordpressPost(id: { eq: $id }) {
+      title
+      acf {
+        subtitle
+        layout_post {
+          ... on WordPressAcf_half_half {
+            column_1_components {
+              text
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            column_2_components {
+              text
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            internal {
+              type
+            }
+          }
+          ... on WordPressAcf_two_thirds_one_third {
+            column_2_components {
+              text
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            column_1_components {
+              text
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            internal {
+              type
+            }
+          }
+          ... on WordPressAcf_full_width {
+            column_components {
+              text
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            internal {
+              type
+            }
+          }
+        }
       }
     }
   }
 `;
 
-function ProjectPage(props) {
-  const post = props.data.markdownRemark;
-  const { title } = post.frontmatter;
+const ProjectPage = props => {
+  const post = props.data.wordpressPost;
+  const content = post.acf.layout_post || [];
+
+  const renderColumn = (components = []) => {
+    return components.map(({ text, image, heading }, index) => (
+      <React.Fragment key={index}>
+        {heading && (
+          <h3>{heading}</h3>
+        )}
+
+        {text && (
+          <div dangerouslySetInnerHTML={{
+            __html: text
+          }} />
+        )}
+
+        {image && (
+          <Image fluid={image.localFile.childImageSharp.fluid} />
+        )}
+      </React.Fragment>
+    ));
+  };
 
   return (
     <Layout
-      header={<Header simple />}
+      header={<Header />}
     >
-      <div className={styles.project}>
-        <Link to="/">Back to projects</Link>
+      <S.Project>
+        <S.Content>
+          <S.Title dangerouslySetInnerHTML={{
+            __html: post.title
+          }} />
 
-        <div className={styles.content}>
-          <h2 className={styles.title}>{title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </div>
+          {content.map((row, index) => (
+            <React.Fragment key={index}>
+              {(() => {
+                switch (row.internal.type) {
+                  case LAYOUT_FULL_WIDTH:
+                    return (
+                      <div className="row">
+                        <div className="col-xs-12">
+                          <S.Column>
+                            {renderColumn(row.column_components)}
+                          </S.Column>
+                        </div>
+                      </div>
+                    );
 
-        <Link to="/">Back to projects</Link>
-      </div>
+                  case LAYOUT_HALF_HALF:
+                    return (
+                      <div className="row">
+                        <div className="col-xs-12 col-md-6">
+                          <S.Column>
+                            {renderColumn(row.column_1_components)}
+                          </S.Column>
+                        </div>
+                        <div className="col-xs-12 col-md-6">
+                          <S.Column>
+                            {renderColumn(row.column_2_components)}
+                          </S.Column>
+                        </div>
+                      </div>
+                    );
+
+                  case LAYOUT_TWO_THIRDS_ONE_THIRD:
+                    return (
+                      <div className="row">
+                        <div className="col-xs-12 col-md-8">
+                          <S.Column>
+                            {renderColumn(row.column_1_components)}
+                          </S.Column>
+                        </div>
+                        <div className="col-xs-12 col-md-4">
+                          <S.Column>
+                            {renderColumn(row.column_2_components)}
+                          </S.Column>
+                        </div>
+                      </div>
+                    );
+
+                  default:
+                    return null;
+                };
+              })()}
+            </React.Fragment>
+          ))}
+        </S.Content>
+      </S.Project>
+
+      <ProjectList withBackground />
     </Layout>
   );
 }

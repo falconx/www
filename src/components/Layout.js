@@ -1,12 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import './global.css';
-
-import styles from './layout.module.css';
+import 'flexboxgrid/css/flexboxgrid.min.css';
 
 import bunny from '../images/bunny.png';
 import carrot from '../images/carrot.svg';
+
+const S = {};
+
+S.Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+`;
+
+S.Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 20px 0;
+
+  @media screen and (min-width: 769px) {
+    padding: 60px 40px 0;
+  }
+`;
+
+S.Bunny = styled.img.attrs({
+  src: bunny,
+  alt: 'A pink super bunny man',
+})`
+  position: fixed;
+  z-index: 3;
+  height: 100px;
+  right: 15px;
+  margin-top: -110px;
+`;
+
+S.Carrot = styled.img.attrs({
+  src: carrot,
+  alt: 'A carrot which rotates as you scroll',
+})`
+  position: fixed;
+  z-index: 3;
+  height: 50px;
+  top: 50%;
+  right: -50px;
+  margin-top: -85px;
+  transition: right .5s linear;
+`;
+
+S.Portal = styled.div`
+  position: absolute;
+  z-index: 1;
+  height: 100px;
+  width: 100px;
+  right: 15px;
+  bottom: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .2);
+`;
 
 const CHAR_C = 66;
 const BUNNY_GAME_ACTIVATION_KEY = CHAR_C;
@@ -78,10 +133,7 @@ class Layout extends Component {
     return (
       <React.Fragment>
         {this.state.showBunnyGame ? (
-          <img
-            className={styles.bunny}
-            src={bunny}
-            alt="A pink super bunny man"
+          <S.Bunny
             style={{
               top: `${this.state.offsetTop}%`,
               transform: `rotate(${this.state.bunnyRotation}deg)`
@@ -89,15 +141,10 @@ class Layout extends Component {
           />
         ) : null}
 
-        <img
-          className={styles.carrot}
-          src={carrot}
-          alt="A carrot which rotates as you scroll"
-          style={carrotStyles}
-        />
+        <S.Carrot style={carrotStyles} />
 
         {this.state.showBunnyGame ? (
-          <span className={styles.portal} />
+          <S.Portal />
         ) : null}
       </React.Fragment>
     );
@@ -105,15 +152,13 @@ class Layout extends Component {
 
   render() {
     return (
-      <div className={styles.layout}>
+      <S.Layout>
         {this.renderBunnyGame()}
 
         {this.props.header}
 
-        <main className={styles.main}>
-          {this.props.children}
-        </main>
-      </div>
+        <S.Main children={this.props.children} />
+      </S.Layout>
     );
   }
 }

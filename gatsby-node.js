@@ -1,62 +1,40 @@
-// https://www.gatsbyjs.org/docs/node-apis/
-
 const path = require('path');
 const { createFilePath, createFileNode } = require('gatsby-source-filesystem');
 
-const gqlProjects = `
-  {
-    allMarkdownRemark {
-      edges {
-        node {
-          fields {
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  // "Ignore" hack added as a workaround to https://github.com/gatsbyjs/gatsby/issues/15707
+  const query = `
+    {
+      allWordpressPost(sort: {fields: date, order: DESC}, filter: {title: {ne: "Ignore"}, acf: {}}) {
+        edges {
+          node {
+            id
             slug
           }
         }
       }
     }
-  }
-`;
+  `;
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+  return graphql(query).then(result => {
+    if (result.errors) {
+      console.error(results.errors);
+      reject(result.error);
+    }
 
-  return new Promise((resolve, reject) => {
-    resolve(graphql(gqlProjects).then(result => {
-      if (result.errors) {
-        console.log(result.errors);
+    const postEdges = result.data.allWordpressPost.edges;
+    const template = path.resolve('./src/templates/project.js');
 
-        return reject(result.errors);
-      }
-
-      const template = path.resolve('./src/templates/project.js');
-
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: template,
-          context: {
-            slug: node.fields.slug,
-          },
-        });
+    postEdges.forEach(edge => {
+      createPage({
+        path: `/${edge.node.slug}`,
+        component: template,
+        context: {
+          id: edge.node.id,
+        },
       });
-    }));
+    });
   });
-};
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({
-      node,
-      getNode,
-      basePath: 'pages',
-    });
-
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug,
-    });
-  }
 };
