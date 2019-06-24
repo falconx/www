@@ -1,0 +1,21 @@
+.project {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto 40px;
+}
+
+.title {
+  margin-bottom: 1em;
+}
+
+.content {
+  margin: 40px 0;
+}
+
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  margin: 1em 0;
+}

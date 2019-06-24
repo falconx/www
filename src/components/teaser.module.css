@@ -1,0 +1,42 @@
+.project {
+  cursor: pointer;
+}
+
+.link {
+  color: #fff;
+  transition: color .15s linear;
+}
+
+.project:active .link,
+.project:hover .link {
+  color: #ffd62e;
+}
+
+.image {
+  display: block;
+  margin-bottom: 1em;
+  background-color: rgba(255, 255, 255, .05);
+  clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 25px), 0% 100%);
+  transition: all .25s linear;
+}
+
+.project:active .image,
+.project:hover .image {
+  filter: grayscale(100%);
+}
+
+.title {
+  font-size: 1.875rem;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  margin-bottom: 1em;
+  color: #939393;
+}
+
+@media screen and (min-width: 769px) {
+  .project {
+    width: 500px;
+  }
+}

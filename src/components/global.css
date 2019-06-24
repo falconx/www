@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'futuramedium';
+  src: url('../fonts/futura_medium_bt.woff2') format('woff2'),
+       url('../fonts/futura_medium_bt.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #fff;
+  background: #e677ad;
+}
+
+:root {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    font-size: 22px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: futuramedium;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #202020;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  height: 20px;
+  width: 20px;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #e677ad;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1em;
+  margin: 0;
+}
+
+img {
+  height: auto;
+}
+
+main {
+  color: #fff;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  color: currentColor;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+em {
+  font-style: normal;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffd62e;
+}
+
+a:hover,
+a:active {
+  color: #fff;
+}
+
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #ffd62e;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  border: 4px solid rgba(255, 255, 255, .1);
+  border-radius: 50px;
+  transition: all .25s linear;
+}
+
+select:active,
+select:hover {
+  color: currentColor;
+  border-color: currentColor;
+}
+
+option {
+  color: #000;
+}
+
+.gatsby-resp-image-link {
+  margin: 1em 0 !important;
+}
+
+.gatsby-resp-image-image {
+  box-shadow: none !important;
+}
+
+.gatsby-resp-image-wrapper {
+  margin-left: 0 !important;
+}
