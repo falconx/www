@@ -3,5 +3,6 @@
 * favicon
 * style select options
 * buy font
+* use react-select
 
 * use CSS Modules variables

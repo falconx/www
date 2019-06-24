@@ -86,6 +86,12 @@
   padding: 0 20px;
 }
 
+/* remain scrollable but hide the scrollbar */
+.education::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 .timeline {
   position: relative;
   display: flex;
