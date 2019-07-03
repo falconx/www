@@ -5,4 +5,6 @@
 * buy font
 * use react-select
 
+* use official gatsby-plugin-mdx package
+
 * use CSS Modules variables

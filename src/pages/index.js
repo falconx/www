@@ -7,33 +7,6 @@ import Layout from '../components/layout';
 import Header from '../components/header';
 import Teaser from '../components/teaser';
 
-export const projectsQuery = graphql`
-  query SiteTitleQuery {
-    allMarkdownRemark {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 80)
-          frontmatter {
-            title
-            subtitle
-            tags
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 500) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 // https://codeburst.io/build-a-blog-using-gatsby-js-react-8561bfe8fc91
 
 class IndexPage extends Component {
@@ -54,7 +27,7 @@ class IndexPage extends Component {
   };
 
   render() {
-    const postList = this.props.data.allMarkdownRemark;
+    const entries = this.props.data.allMdx;
 
     return (
       <Layout
@@ -70,13 +43,13 @@ class IndexPage extends Component {
 
         <div className={styles.fullWidth}>
           <ul className={styles.projects}>
-            {postList.edges.map(({ node }) => {
-              const tags = node.frontmatter.tags || [];
-              const thumbnail = node.frontmatter.thumbnail && node.frontmatter.thumbnail.childImageSharp.fluid;
+            {entries.edges.map(({ node }) => {
+              // const tags = node.frontmatter.tags || [];
+              // const thumbnail = node.frontmatter.thumbnail && node.frontmatter.thumbnail.childImageSharp.fluid;
 
-              if (this.state.filterBy && !tags.includes(this.state.filterBy)) {
-                return null;
-              }
+              // if (this.state.filterBy && !tags.includes(this.state.filterBy)) {
+              //   return null;
+              // }
 
               return (
                 <li
@@ -87,8 +60,8 @@ class IndexPage extends Component {
                     path={node.fields.slug}
                     title={node.frontmatter.title}
                     subtitle={node.frontmatter.subtitle}
-                    thumbnail={thumbnail}
-                    children={node.excerpt}
+                    // thumbnail={thumbnail}
+                    // children={node.excerpt}
                   />
                 </li>
               );
@@ -99,5 +72,23 @@ class IndexPage extends Component {
     );
   }
 }
+
+export const pageQuery = graphql`
+  query SiteTitleQuery {
+    allMdx {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            subtitle
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

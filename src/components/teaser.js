@@ -10,10 +10,10 @@ class Teaser extends Component {
     path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    thumbnail: PropTypes.shape({
-      src: PropTypes.string.isRequired,
-    }),
-    children: PropTypes.node.isRequired,
+    // thumbnail: PropTypes.shape({
+    //   src: PropTypes.string.isRequired,
+    // }),
+    // children: PropTypes.node.isRequired,
   };
 
   render() {
@@ -30,9 +30,9 @@ class Teaser extends Component {
           >{this.props.title}</Link>
         </h2>
 
-        {this.props.thumbnail && (
+        {/*this.props.thumbnail && (
           <Image className={styles.image} fluid={this.props.thumbnail} />
-        )}
+        )*/}
 
         {this.props.subtitle && (
           <h3 className={styles.subtitle}>{this.props.subtitle}</h3>

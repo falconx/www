@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { MDXProvider } from '@mdx-js/react';
+
+import PhotoGrid from './photo-grid';
 
 import './global.css';
 
@@ -76,30 +79,36 @@ class Layout extends Component {
     }
 
     return (
-      <React.Fragment>
-        {this.state.showBunnyGame ? (
+      <MDXProvider
+        // components={{
+        //   PhotoGrid,
+        // }}
+      >
+        <React.Fragment>
+          {this.state.showBunnyGame ? (
+            <img
+              className={styles.bunny}
+              src={bunny}
+              alt="A pink super bunny man"
+              style={{
+                top: `${this.state.offsetTop}%`,
+                transform: `rotate(${this.state.bunnyRotation}deg)`
+              }}
+            />
+          ) : null}
+
           <img
-            className={styles.bunny}
-            src={bunny}
-            alt="A pink super bunny man"
-            style={{
-              top: `${this.state.offsetTop}%`,
-              transform: `rotate(${this.state.bunnyRotation}deg)`
-            }}
+            className={styles.carrot}
+            src={carrot}
+            alt="A carrot which rotates as you scroll"
+            style={carrotStyles}
           />
-        ) : null}
 
-        <img
-          className={styles.carrot}
-          src={carrot}
-          alt="A carrot which rotates as you scroll"
-          style={carrotStyles}
-        />
-
-        {this.state.showBunnyGame ? (
-          <span className={styles.portal} />
-        ) : null}
-      </React.Fragment>
+          {this.state.showBunnyGame ? (
+            <span className={styles.portal} />
+          ) : null}
+        </React.Fragment>
+      </MDXProvider>
     );
   }
 

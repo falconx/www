@@ -1,41 +1,35 @@
-// https://www.gatsbyjs.org/docs/node-apis/
-
 const path = require('path');
 const { createFilePath, createFileNode } = require('gatsby-source-filesystem');
-
-const gqlProjects = `
-  {
-    allMarkdownRemark {
-      edges {
-        node {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    resolve(graphql(gqlProjects).then(result => {
+    resolve(graphql(`
+      query {
+        allMdx {
+          edges {
+            node {
+              id
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
       if (result.errors) {
-        console.log(result.errors);
-
-        return reject(result.errors);
+        console.error(result.errors);
+        reject(result.errors);
       }
 
-      const template = path.resolve('./src/templates/project.js');
-
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      result.data.allMdx.edges.forEach(({ node }) => {
         createPage({
           path: node.fields.slug,
-          component: template,
+          component: path.resolve('./src/templates/project.js'),
           context: {
-            slug: node.fields.slug,
+            id: node.id,
           },
         });
       });
@@ -43,20 +37,22 @@ exports.createPages = ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({
-      node,
-      getNode,
-      basePath: 'pages',
-    });
+  // We only want to operate on `Mdx` nodes. If we had content from a
+  // remote CMS we could also check to see if the parent node was a
+  // `File` node here
+  if (node.internal.type === 'Mdx') {
+    const value = createFilePath({ node, getNode });
 
     createNodeField({
-      node,
+      // Name of the field you are adding
       name: 'slug',
-      value: slug,
+      // Individual MDX node
+      node,
+      // Generated value based on filepath with "pages" prefix
+      value: `/pages${value}`
     });
   }
 };
