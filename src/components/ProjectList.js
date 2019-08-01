@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import Teaser from '../components/Teaser';
 import ConditionalWrap from '../components/ConditionalWrap';
 
+const STORAGE_FILTER_BY = 'filterBy';
+
 const propTypes = {
   withBackground: PropTypes.bool,
 };
@@ -86,7 +88,11 @@ S.Project = styled.li`
 `;
 
 const ProjectList = props => {
-  const [filterBy, setFilterBy] = React.useState();
+  const [filterBy, setFilterBy] = React.useState(window.localStorage.getItem(STORAGE_FILTER_BY));
+
+  const storeFilterBy = value => {
+    window.localStorage.setItem(STORAGE_FILTER_BY, value);
+  };
 
   // "Ignore" hack added as a workaround to https://github.com/gatsbyjs/gatsby/issues/15707
   return (
@@ -142,7 +148,10 @@ const ProjectList = props => {
               children={
                 <React.Fragment>
                   <S.Filter>
-                    Show me <S.Select onChange={({ target: { value }}) => setFilterBy(value)}>
+                    Show me <S.Select defaultValue={filterBy} onChange={({ target: { value }}) => {
+                      setFilterBy(value);
+                      storeFilterBy(value);
+                  }}>
                       <option value="">all the things</option>
 
                       {tags.map((tag, index) => (
