@@ -12,6 +12,10 @@ const LAYOUT_TWO_THIRDS_ONE_THIRD = 'WordPressAcf_two_thirds_one_third';
 
 const S = {};
 
+S.Title = styled.h1`
+  font-size: 3.5rem;
+`;
+
 S.Project = styled.div`
   width: 100%;
   max-width: 1920px;
@@ -166,7 +170,7 @@ const ProjectPage = props => {
         <S.Content>
           <Link to="/">Back to homepage</Link>
 
-          <h1 dangerouslySetInnerHTML={{
+          <S.Title dangerouslySetInnerHTML={{
             __html: post.title
           }} />
 
