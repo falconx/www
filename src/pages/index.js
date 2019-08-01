@@ -5,32 +5,6 @@ import Header from '../components/Header';
 import ProjectList from '../components/ProjectList';
 import AboutMe from '../components/AboutMe';
 
-// Todo: Obtain from CMS
-const skills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'PHP',
-  'React',
-  'Drupal',
-  'WordPress',
-  'Jekyll',
-  'Gatsby',
-  'C#',
-  'Photoshop',
-  'Illustrator',
-];
-
-// Todo: Obtain from CMS
-const interests = [
-  'Video Games',
-  'Board Games',
-  'Psychology',
-  'Bouldering',
-  'Nutrition',
-  'Bodybuilding',
-];
-
 const IndexPage = props => (
   <Layout
     header={

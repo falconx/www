@@ -4,7 +4,6 @@ import Image from 'gatsby-image';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
-import Header from '../components/Header';
 import ProjectList from '../components/ProjectList';
 
 const LAYOUT_FULL_WIDTH = 'WordPressAcf_full_width';
