@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import styled from 'styled-components';
 
@@ -164,7 +164,7 @@ const ProjectPage = props => {
     <Layout>
       <S.Project>
         <S.Content>
-          <a href="/">Back to homepage</a>
+          <Link to="/">Back to homepage</Link>
 
           <h1 dangerouslySetInnerHTML={{
             __html: post.title
