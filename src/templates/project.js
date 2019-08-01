@@ -19,10 +19,6 @@ S.Project = styled.div`
   margin: 0 auto 40px;
 `;
 
-S.Title = styled.h2`
-  margin-bottom: 1em;
-`;
-
 S.Content = styled.div`
   line-height: 1.5;
 
@@ -149,7 +145,7 @@ const ProjectPage = props => {
     return components.map(({ text, image, heading }, index) => (
       <React.Fragment key={index}>
         {heading && (
-          <h3>{heading}</h3>
+          <h2>{heading}</h2>
         )}
 
         {text && (
@@ -166,12 +162,12 @@ const ProjectPage = props => {
   };
 
   return (
-    <Layout
-      header={<Header />}
-    >
+    <Layout>
       <S.Project>
         <S.Content>
-          <S.Title dangerouslySetInnerHTML={{
+          <a href="/">Back to homepage</a>
+
+          <h1 dangerouslySetInnerHTML={{
             __html: post.title
           }} />
 
