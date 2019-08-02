@@ -97,10 +97,6 @@ S.Filter = styled.div`
   line-height: 2;
 `;
 
-// S.Select = styled.select`
-//   margin: 0 10px;
-// `;
-
 S.Wrapper = styled.div`
   display: flex;
   flex-direction: column;
