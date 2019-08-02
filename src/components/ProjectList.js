@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import Select from 'react-select';
 
 import Teaser from '../components/Teaser';
 import ConditionalWrap from '../components/ConditionalWrap';
@@ -12,6 +13,83 @@ const propTypes = {
   withBackground: PropTypes.bool,
 };
 
+const selectStyles = {
+  container: provided => ({
+    ...provided,
+    display: 'inline-block',
+    width: 250,
+    marginLeft: 20,
+  }),
+  control: (provided, state) => {
+    let styles = {
+      display: 'flex',
+      border: '4px solid',
+      borderColor: 'rgba(255, 255, 255, .1)',
+      borderRadius: 50,
+      cursor: 'pointer',
+      padding: '10px 20px',
+      transition: 'all .25s linear',
+    };
+
+    if (state.isFocused || state.isSelected) {
+      styles.borderColor = '#fff';
+    }
+
+    return styles;
+  },
+  menu: provided => ({
+    ...provided,
+    margin: 0,
+    boxShadow: 'none',
+    backgroundColor: 'transparent',
+  }),
+  menuList: provided => ({
+    ...provided,
+    padding: 0,
+    maxHeight: 'none',
+  }),
+  option: (provided, state) => {
+    let styles = {
+      color: '#000',
+      backgroundColor: '#fff',
+      borderRadius: 25,
+      textAlign: 'left',
+      width: 'auto',
+      float: 'left',
+      clear: 'left',
+      marginTop: 10,
+      padding: '5px 20px',
+      cursor: 'pointer',
+      transition: 'all .15s linear',
+    };
+
+    if (state.isFocused) {
+      styles.color = '#fff';
+      styles.backgroundColor = '#000';
+    }
+
+    return styles;
+  },
+  placeholder: (provided, state) => {
+    let styles = {
+      ...provided,
+      margin: 0,
+      transition: 'all .25s linear',
+    };
+
+    if (state.isFocused) {
+      styles.color = '#fff';
+    }
+
+    return styles;
+  },
+  input: provided => ({
+    ...provided,
+    margin: 0,
+    padding: 0,
+  }),
+};
+
 const S = {};
 
 S.Filter = styled.div`
@@ -19,14 +97,14 @@ S.Filter = styled.div`
   line-height: 2;
 `;
 
-S.Select = styled.select`
-  margin: 0 10px;
-`;
+// S.Select = styled.select`
+//   margin: 0 10px;
+// `;
 
 S.Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 100px;
   background-color: rgba(8, 8, 8, .75);
   clip-path: polygon(0 50px, 100% 0, 100% 100%, 0 100%);
 `;
@@ -67,7 +145,7 @@ S.ProjectList = styled.ul`
     display: flex;
     width: auto;
     max-width: none;
-    margin-top: 100px;
+    margin-top: 60px;
     padding-left: 40px;
     padding-right: 40px;
     margin-bottom: 100px;
@@ -140,6 +218,14 @@ const ProjectList = props => {
           return edge.node && edge.node.name.toLowerCase();
         });
 
+        const selectOptions = [{
+          value: '',
+          label: 'all of the things',
+        }].concat(tags.map(tag => ({
+          value: tag,
+          label: tag,
+        })));
+
         return (
           <S.FullWidth>
             <ConditionalWrap
@@ -148,20 +234,20 @@ const ProjectList = props => {
               children={
                 <React.Fragment>
                   <S.Filter>
-                    Show me <S.Select defaultValue={filterBy} onChange={({ target: { value }}) => {
-                      setFilterBy(value);
-                      storeFilterBy(value);
-                  }}>
-                      <option value="">all the things</option>
-
-                      {tags.map((tag, index) => (
-                        <option
-                          key={index}
-                          value={tag}
-                          children={tag}
-                        />
-                      ))}
-                    </S.Select>
+                    Show me
+                    <Select
+                      styles={selectStyles}
+                      value={filterBy}
+                      options={selectOptions}
+                      components={{
+                        IndicatorSeparator: null,
+                        DropdownIndicator: null,
+                      }}
+                      onChange={({ target: { value }}) => {
+                        setFilterBy(value);
+                        storeFilterBy(value);
+                      }}
+                    />
                   </S.Filter>
 
                   <S.ProjectList>
