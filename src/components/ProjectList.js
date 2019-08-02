@@ -83,6 +83,10 @@ const selectStyles = {
 
     return styles;
   },
+  singleValue: provided => ({
+    ...provided,
+    color: '#fff',
+  }),
   input: provided => ({
     ...provided,
     margin: 0,
@@ -233,13 +237,16 @@ const ProjectList = props => {
                     Show me
                     <Select
                       styles={selectStyles}
-                      value={filterBy}
+                      value={{
+                        value: filterBy,
+                        label: filterBy || 'all the things',
+                      }}
                       options={selectOptions}
                       components={{
                         IndicatorSeparator: null,
                         DropdownIndicator: null,
                       }}
-                      onChange={({ target: { value }}) => {
+                      onChange={({ value, label }) => {
                         setFilterBy(value);
                         storeFilterBy(value);
                       }}
