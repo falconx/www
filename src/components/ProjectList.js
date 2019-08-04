@@ -166,10 +166,14 @@ S.Project = styled.li`
 `;
 
 const ProjectList = props => {
-  const [filterBy, setFilterBy] = React.useState(window.localStorage.getItem(STORAGE_FILTER_BY));
+  const isSsr = typeof window === `undefined`;
+
+  const [filterBy, setFilterBy] = React.useState(isSsr ? undefined : window.localStorage.getItem(STORAGE_FILTER_BY));
 
   const storeFilterBy = value => {
-    window.localStorage.setItem(STORAGE_FILTER_BY, value);
+    if (!isSsr) {
+      window.localStorage.setItem(STORAGE_FILTER_BY, value);
+    }
   };
 
   // "Ignore" hack added as a workaround to https://github.com/gatsbyjs/gatsby/issues/15707

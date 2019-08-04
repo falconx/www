@@ -220,7 +220,7 @@ const ProjectPage = props => {
       );
     }
 
-    if (image) {
+    if (image && image.localFile) {
       return (
         <a
           href={image.localFile.publicURL}
