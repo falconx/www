@@ -1,5 +1,9 @@
 {
   "name": "www-gatsby",
+  "engines": {
+    "node": "10.x",
+    "yarn": "1.x"
+  },
   "description": "Matt Layton portfolio",
   "version": "1.0.0",
   "author": "Matt Layton <mattlayt@gmail.com>",
