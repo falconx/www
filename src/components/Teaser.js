@@ -56,7 +56,7 @@ const propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   thumbnail: PropTypes.object,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 const Teaser = props => (

@@ -57,12 +57,13 @@ S.About = styled(S.Column)`
 S.AboutHeader = styled.div`
   position: relative;
   text-align: center;
+  margin: 30px 0;
 
   @media screen and (min-width: 769px) {
     &::after {
       content: '';
       position: absolute;
-      top: 200px;
+      top: 150px;
       left: 0;
       display: block;
       height: 75px;
@@ -223,10 +224,8 @@ S.Photo = styled.img.attrs({
 })`
   position: relative;
   z-index: 1;
-  height: 400px;
-  width: 400px;
-  max-width: 100%;
-  border-radius: 50%;
+  height: 300px;
+  width: 300px;
 `;
 
 S.Skill = styled.div`
@@ -246,7 +245,7 @@ S.Skill = styled.div`
 const AboutMe = props => (
   <React.Fragment>
     <S.Column>
-      <p>I'm passionate about creating beatiful user interfaces which rigorously conform to
+      <p>I'm passionate about creating beautiful user interfaces which rigorously conform to
       <em> web standards</em> whilst being <em>responsive</em> and <em>accessible</em>.</p>
     </S.Column>
 

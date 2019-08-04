@@ -184,12 +184,11 @@ const ProjectList = props => {
               }
             }
           }
-          allWordpressPost(sort: {fields: date, order: DESC}, filter: {title: {ne: "Ignore"}}) {
+          allWordpressPost(sort: {fields: modified, order: DESC}, filter: {title: {ne: "Ignore"}}) {
             edges {
               node {
                 id
                 title
-                excerpt
                 date
                 slug
                 acf {
@@ -267,7 +266,6 @@ const ProjectList = props => {
                             title={node.title}
                             subtitle={node.acf.subtitle}
                             thumbnail={node.acf.thumbnail.localFile.childImageSharp.fluid}
-                            children={node.excerpt}
                           />
                         </S.Project>
                       );

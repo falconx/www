@@ -9,6 +9,7 @@ import ProjectList from '../components/ProjectList';
 const LAYOUT_FULL_WIDTH = 'WordPressAcf_full_width';
 const LAYOUT_HALF_HALF = 'WordPressAcf_half_half';
 const LAYOUT_TWO_THIRDS_ONE_THIRD = 'WordPressAcf_two_thirds_one_third';
+const LAYOUT_GRID = 'WordPressAcf_grid';
 
 const S = {};
 
@@ -26,7 +27,12 @@ S.Content = styled.div`
   line-height: 1.5;
 
   [class^="col-"] {
-    margin: 30px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  p + p {
+    margin-top: 1em;
   }
 `;
 
@@ -54,12 +60,43 @@ export const query = graphql`
       acf {
         subtitle
         layout_post {
+          ... on WordPressAcf_grid {
+            columns
+            column_components {
+              text
+              heading
+              svg {
+                url {
+                  source_url
+                }
+              }
+              image {
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            internal {
+              type
+            }
+          }
           ... on WordPressAcf_half_half {
             column_1_components {
               text
               heading
+              svg {
+                url {
+                  source_url
+                }
+              }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     fluid {
                       ...GatsbyImageSharpFluid
@@ -71,8 +108,14 @@ export const query = graphql`
             column_2_components {
               text
               heading
+              svg {
+                url {
+                  source_url
+                }
+              }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     fluid {
                       ...GatsbyImageSharpFluid
@@ -89,8 +132,14 @@ export const query = graphql`
             column_2_components {
               text
               heading
+              svg {
+                url {
+                  source_url
+                }
+              }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     fluid {
                       ...GatsbyImageSharpFluid
@@ -102,8 +151,14 @@ export const query = graphql`
             column_1_components {
               text
               heading
+              svg {
+                url {
+                  source_url
+                }
+              }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     fluid {
                       ...GatsbyImageSharpFluid
@@ -120,8 +175,14 @@ export const query = graphql`
             column_components {
               text
               heading
+              svg {
+                url {
+                  source_url
+                }
+              }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     fluid {
                       ...GatsbyImageSharpFluid
@@ -144,24 +205,86 @@ const ProjectPage = props => {
   const post = props.data.wordpressPost;
   const content = post.acf.layout_post || [];
 
-  const renderColumn = (components = []) => {
-    return components.map(({ text, image, heading }, index) => (
-      <React.Fragment key={index}>
-        {heading && (
-          <h2>{heading}</h2>
-        )}
+  const renderColumn = ({ heading, text, image, svg }) => {
+    if (heading) {
+      return (
+        <h2>{heading}</h2>
+      );
+    }
 
-        {text && (
-          <div dangerouslySetInnerHTML={{
-            __html: text
-          }} />
-        )}
+    if (text) {
+      return (
+        <div dangerouslySetInnerHTML={{
+          __html: text
+        }} />
+      );
+    }
 
-        {image && (
+    if (image) {
+      return (
+        <a
+          href={image.localFile.publicURL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Image fluid={image.localFile.childImageSharp.fluid} />
-        )}
+        </a>
+      );
+    }
+
+    if (svg) {
+      return (
+        <img
+          src={svg.url.source_url}
+          alt={svg.url.alt_text}
+        />
+      );
+    }
+  };
+
+  const renderColumns = (components = []) => {
+    return components.map((component, index) => (
+      <React.Fragment key={index}>
+        {renderColumn(component)}
       </React.Fragment>
     ));
+  };
+
+  const renderGridColumns = (columnCount, components = []) => {
+    const COLUMNS = 12;
+
+    const getClassNames = columnIndex => {
+      let columns = COLUMNS / columnCount;
+
+      let classNames = [
+        'col-xs-12',
+      ];
+
+      if (COLUMNS % columnCount !== 0) {
+        classNames.push(`col-md-${Math.round(columns)}`);
+
+        if (columnIndex === 0) {
+          classNames.push(`col-md-offset-${Math.round((COLUMNS / columnCount) / 2)}`);
+        }
+      } else {
+        classNames.push(`col-md-${columns}`);
+      }
+
+      return classNames.join(' ');
+    };
+
+    return components.map((component, index) => {
+      return (
+        <div
+          key={index}
+          className={getClassNames(index)}
+        >
+          <S.Column>
+            {renderColumn(component)}
+          </S.Column>
+        </div>
+      );
+    });
   };
 
   return (
@@ -183,7 +306,7 @@ const ProjectPage = props => {
                       <div className="row">
                         <div className="col-xs-12">
                           <S.Column>
-                            {renderColumn(row.column_components)}
+                            {renderColumns(row.column_components)}
                           </S.Column>
                         </div>
                       </div>
@@ -194,12 +317,12 @@ const ProjectPage = props => {
                       <div className="row">
                         <div className="col-xs-12 col-md-6">
                           <S.Column>
-                            {renderColumn(row.column_1_components)}
+                            {renderColumns(row.column_1_components)}
                           </S.Column>
                         </div>
                         <div className="col-xs-12 col-md-6">
                           <S.Column>
-                            {renderColumn(row.column_2_components)}
+                            {renderColumns(row.column_2_components)}
                           </S.Column>
                         </div>
                       </div>
@@ -210,14 +333,21 @@ const ProjectPage = props => {
                       <div className="row">
                         <div className="col-xs-12 col-md-8">
                           <S.Column>
-                            {renderColumn(row.column_1_components)}
+                            {renderColumns(row.column_1_components)}
                           </S.Column>
                         </div>
                         <div className="col-xs-12 col-md-4">
                           <S.Column>
-                            {renderColumn(row.column_2_components)}
+                            {renderColumns(row.column_2_components)}
                           </S.Column>
                         </div>
+                      </div>
+                    );
+
+                  case LAYOUT_GRID:
+                    return (
+                      <div className="row">
+                        {renderGridColumns(row.columns, row.column_components)}
                       </div>
                     );
 
