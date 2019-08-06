@@ -168,7 +168,7 @@ S.Project = styled.li`
 const ProjectList = props => {
   const isSsr = typeof window === `undefined`;
 
-  const [filterBy, setFilterBy] = React.useState(isSsr ? undefined : window.localStorage.getItem(STORAGE_FILTER_BY));
+  const [filterBy, setFilterBy] = React.useState(isSsr  ? undefined : window.localStorage.getItem(STORAGE_FILTER_BY));
 
   const storeFilterBy = value => {
     if (!isSsr) {
@@ -256,7 +256,7 @@ const ProjectList = props => {
                     />
                   </S.Filter>
 
-                  <S.ProjectList>
+                  <S.ProjectList id="projects">
                     {posts.edges.map(({ node }) => {
                       // filter by tag
                       if (filterBy && !node.acf.tags.map(tag => tag.name.toLowerCase()).includes(filterBy)) {

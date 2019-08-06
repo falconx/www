@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import VisuallyHidden from './VisuallyHidden';
+import { DesktopOnly, MobileOnly } from './Media';
 
 import me from '../images/me.svg';
 
@@ -59,6 +60,9 @@ S.AboutHeader = styled.div`
   text-align: center;
   margin: 30px 0;
 
+  /* clear float */
+  overflow: hidden;
+
   @media screen and (min-width: 769px) {
     &::after {
       content: '';
@@ -98,7 +102,7 @@ S.AboutContent = styled.div`
 S.Content = styled.div`
   grid-area: introduction;
 
-  p + p {
+  p + * {
     margin-top: 1em;
   }
 `;
@@ -220,45 +224,78 @@ S.Interest = styled.li`
 `;
 
 S.Photo = styled.img.attrs({
+  src: me,
   alt: '',
 })`
   position: relative;
   z-index: 1;
-  height: 300px;
   width: 300px;
+  max-width: 75%;
+`;
+
+S.SkillList = styled.ul`
+  margin: 0 -5px;
+
+  @media screen and (min-width: 769px) {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
 `;
 
 S.Skill = styled.div`
   display: inline-block;
   padding: 5px 10px;
-  margin-bottom: 20px;
+  margin: 5px;
   border: 4px solid #e677ad;
   border-radius: 50px;
   line-height: 1;
   color: #e677ad;
 
-  & + & {
-    margin-left: 20px;
+  @media screen and (min-width: 769px) {
+    margin: 10px;
+  }
+`;
+
+S.MobilePhoto = styled.div`
+  width: 250px;
+  height: 250px;
+  float: right;
+  background-image: url('${me}');
+  background-size: cover;
+  clip-path: circle(50% at 90%);
+  background-position: 100px 0;
+  shape-outside: circle(50% at 90%) border-box;
+  shape-margin: 10px;
+  margin-top: 40px;
+  margin-right: -20px;
+
+  @media screen and (min-width: 769px) {
+    display: none;
   }
 `;
 
 const AboutMe = props => (
   <React.Fragment>
-    <S.Column>
-      <p>I'm passionate about creating beautiful user interfaces which rigorously conform to
-      <em> web standards</em> whilst being <em>responsive</em> and <em>accessible</em>.</p>
-    </S.Column>
+    <DesktopOnly>
+      <S.Column>
+        <p>I'm passionate about creating beautiful user interfaces which rigorously conform to
+        <em> web standards</em> whilst being <em>responsive</em> and <em>accessible</em>.</p>
+      </S.Column>
+    </DesktopOnly>
 
     <S.About>
-      <S.AboutHeader>
-        <S.Photo src={me} />
-      </S.AboutHeader>
+      <MobileOnly>
+        <S.MobilePhoto />
 
-      <S.AboutContent>
         <S.Content>
-          <VisuallyHidden>
-            <h3>Introduction</h3>
-          </VisuallyHidden>
+          <p>I'm passionate about creating beautiful user interfaces which rigorously conform to
+          <em> web standards</em> whilst being <em>responsive</em> and <em>accessible</em>.</p>
+
+          <div>
+            <VisuallyHidden>
+              <h3>Introduction</h3>
+            </VisuallyHidden>
+          </div>
 
           <p>Hi, I'm Matt. I studied computer science and games programming and have been a web
           developer now for more than ten years. Things have changed a lot since I first started
@@ -276,6 +313,38 @@ const AboutMe = props => (
           projects (including the ninth-largest commercial airline in the US). I also freelance,
           so get in touch if you have a project or an idea you'd like me to work on.</p>
         </S.Content>
+      </MobileOnly>
+
+      <DesktopOnly>
+        <S.AboutHeader>
+          <S.Photo />
+        </S.AboutHeader>
+      </DesktopOnly>
+
+      <S.AboutContent>
+        <DesktopOnly>
+          <S.Content>
+            <VisuallyHidden>
+              <h3>Introduction</h3>
+            </VisuallyHidden>
+
+            <p>Hi, I'm Matt. I studied computer science and games programming and have been a web
+            developer now for more than ten years. Things have changed a lot since I first started
+            and the web platform is moving faster than ever! I've always been excited about what
+            could be achieved and seeing my own ideas go from design to code. I spent a lot of my
+            youth turning designs into <i>pixel perfect</i> html and CSS and even, needlessly, writing
+            PHP and MySQL based content management systems from scratch. This was all great practice
+            and taught me a lot but these days I'm able to focus my energy on conforming to
+            accessibility standards, semantics, and building robust, cross browser, user interfaces.
+            I love nerding out about best practices and putting myself in the shoes of users who
+            rely on assistive technologies to browse the web.</p>
+
+            <p>The collection of work you find here is by no means comprehensive and merely provides
+            a snapshot of what I've accomplished. I've worked on both social good and corporate
+            projects (including the ninth-largest commercial airline in the US). I also freelance,
+            so get in touch if you have a project or an idea you'd like me to work on.</p>
+          </S.Content>
+        </DesktopOnly>
 
         <S.Experience>
           <h3>Work &amp; Experience</h3>
@@ -315,11 +384,11 @@ const AboutMe = props => (
         <S.Skills>
           <h3>Software Skills</h3>
 
-          <ul>
+          <S.SkillList>
             {skills.map((skill, i) => (
               <S.Skill key={i}>{skill}</S.Skill>
             ))}
-          </ul>
+          </S.SkillList>
         </S.Skills>
 
         <S.Interests>

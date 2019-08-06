@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import { MobileOnly } from './Media';
+
 import shapes from '../images/shapes.png';
 
 const propTypes = {
@@ -75,10 +77,14 @@ S.Intro = styled(S.Column)`
 S.Title = styled.h1`
   margin-bottom: 10px;
   color: #ffd62e;
-  font-size: 3.5rem;
   text-transform: uppercase;
   letter-spacing: 15px;
+  font-size: 2rem;
   line-height: 1.25;
+
+  @media screen and (min-width: 769px) {
+    font-size: 3.5rem;
+  }
 `;
 
 // Todo: Obtain content from CMS
@@ -86,8 +92,12 @@ const Header = props => (
   <S.Header>
     <S.Intro>
       <S.Title>
-        <Link to="/">Matt<br />Layton</Link>
+        <Link to="/">Matt<wbr />Layton</Link>
       </S.Title>
+
+      <MobileOnly>
+        <Link to="#projects">Jump to projects</Link>
+      </MobileOnly>
 
       {props.rightContent}
     </S.Intro>
