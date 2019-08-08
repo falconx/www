@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-import { MobileOnly } from './Media';
+import AboutMe from './AboutMe';
 
 import shapes from '../images/shapes.png';
 
@@ -21,6 +21,7 @@ S.Header = styled.header`
   padding: 20px;
   padding-bottom: 60px;
   clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 50px), 0% 100%);
+  font-size: 1.5rem;
   line-height: 2;
 
   /* Achieves semi-opaque background image */
@@ -40,32 +41,23 @@ S.Header = styled.header`
     color: #fff;
   }
 
-  a,
-  button {
-    color: #ffd62e;
-  }
-
-  a:active,
-  a:hover,
-  button:active,
-  button:hover {
-    color: #fff;
+  @media screen and (min-width: 576px) {
+    padding: 40px;
+    padding-bottom: 80px;
   }
 
   @media screen and (min-width: 769px) {
-    padding: 40px;
-    padding-bottom: 80px;
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
 S.Column = styled.div`
   margin: 0 auto;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     max-width: 600px;
   }
 `;
@@ -82,7 +74,7 @@ S.Title = styled.h1`
   font-size: 2rem;
   line-height: 1.25;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     font-size: 3.5rem;
   }
 `;
@@ -95,14 +87,10 @@ const Header = props => (
         <Link to="/">Matt<wbr />Layton</Link>
       </S.Title>
 
-      <MobileOnly>
-        <Link to="#projects">Jump to projects</Link>
-      </MobileOnly>
-
-      {props.rightContent}
+      <p>Hey! I'm a <em>front-end web engineer</em> with more than 10 years experience.</p>
     </S.Intro>
 
-    {props.children}
+    <AboutMe />
   </S.Header>
 );
 

@@ -129,7 +129,7 @@ S.FullWidth = styled.div`
     background-color: #939393;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     margin-left: -40px;
     margin-right: -40px;
   }
@@ -141,7 +141,7 @@ S.ProjectList = styled.ul`
   margin: 40px auto 20px;
   padding: 0 20px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     display: flex;
     width: auto;
     max-width: none;
@@ -157,7 +157,7 @@ S.Project = styled.li`
     margin-top: 40px;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     & + & {
       margin-top: 0;
       margin-left: 20px;
@@ -256,7 +256,7 @@ const ProjectList = props => {
                     />
                   </S.Filter>
 
-                  <S.ProjectList id="projects">
+                  <S.ProjectList>
                     {posts.edges.map(({ node }) => {
                       // filter by tag
                       if (filterBy && !node.acf.tags.map(tag => tag.name.toLowerCase()).includes(filterBy)) {

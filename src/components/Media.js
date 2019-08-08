@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DesktopOnly = styled.div`
   display: none;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     display: block;
   }
 `;
@@ -11,7 +11,7 @@ export const DesktopOnly = styled.div`
 export const MobileOnly = styled.div`
   display: block;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     display: none;
   }
 `;

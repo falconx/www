@@ -27,7 +27,7 @@ S.Project = styled.div`
     filter: grayscale(100%);
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     width: 500px;
   }
 `;

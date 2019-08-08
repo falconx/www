@@ -23,7 +23,7 @@ S.Main = styled.main`
   flex: 1;
   padding: 20px 20px 0;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 576px) {
     padding: 60px 40px 0;
   }
 `;
