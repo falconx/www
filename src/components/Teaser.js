@@ -39,11 +39,11 @@ S.Link = styled(Link)`
 
 S.Title = styled.h2`
   font-size: 1.875rem;
-  margin-bottom: 1em;
+  margin-bottom: 10px;
 `;
 
 S.SubTitle = styled.h3`
-  margin-bottom: 1em;
+  margin-bottom: 20px;
   color: #939393;
 `;
 
@@ -71,12 +71,12 @@ const Teaser = props => (
       />
     </S.Title>
 
-    {props.thumbnail && (
-      <S.Image fluid={props.thumbnail} />
-    )}
-
     {props.subtitle && (
       <S.SubTitle children={props.subtitle} />
+    )}
+
+    {props.thumbnail && (
+      <S.Image fluid={props.thumbnail} />
     )}
 
     <S.Description

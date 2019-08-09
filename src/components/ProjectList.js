@@ -158,6 +158,9 @@ S.Project = styled.li`
   }
 
   @media screen and (min-width: 576px) {
+    display: flex;
+    align-items: flex-end;
+
     & + & {
       margin-top: 0;
       margin-left: 20px;
