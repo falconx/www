@@ -97,6 +97,7 @@ const selectStyles = {
 const S = {};
 
 S.Filter = styled.div`
+  padding: 0 20px;
   text-align: center;
   line-height: 2;
 `;

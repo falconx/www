@@ -15,7 +15,6 @@ S.Modal = styled.div`
   width: 100%;
   padding: 20px;
   background-color: rgba(0, 0, 0, .9);
-  font-size: 1.5rem;
   line-height: 1.5;
   overflow-y: auto;
 

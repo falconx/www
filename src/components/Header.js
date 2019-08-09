@@ -21,7 +21,6 @@ S.Header = styled.header`
   padding: 20px;
   padding-bottom: 60px;
   clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 50px), 0% 100%);
-  font-size: 1.5rem;
   line-height: 2;
 
   /* Achieves semi-opaque background image */

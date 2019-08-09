@@ -25,17 +25,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: futuramedium;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #fff;
   background-color: #202020;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media screen and (min-width: 576px) {
-  body {
-    font-size: 1.5rem;
-  }
 }
 
 body::-webkit-scrollbar {

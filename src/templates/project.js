@@ -14,7 +14,13 @@ const LAYOUT_GRID = 'WordPressAcf_grid';
 const S = {};
 
 S.Title = styled.h1`
-  font-size: 3.5rem;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 20px;
+
+  @media screen and (min-width: 576px) {
+    font-size: 3.5rem;
+  }
 `;
 
 S.Project = styled.div`
@@ -29,6 +35,10 @@ S.Content = styled.div`
   [class^="col-"] {
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+
+  a {
+    word-break: break-all;
   }
 
   p + p {
