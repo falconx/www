@@ -21,11 +21,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Matt Layton Portfolio',
+        short_name: 'Matt Layton',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#e677ad',
+        theme_color: '#e677ad',
         display: 'minimal-ui',
         // icon: "src/images/gatsby-icon.png", // This path is relative to the root of the site.
       },
