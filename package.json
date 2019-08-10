@@ -37,6 +37,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
+    "test": "echo skipping tests",
     "format": "prettier --write \"src/**/*.js\"",
     "heroku-postbuild": "gatsby build"
   },
