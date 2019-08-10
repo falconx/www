@@ -267,7 +267,7 @@ const ProjectPage = props => {
       let columns = COLUMNS / columnCount;
 
       let classNames = [
-        'col-xs-12',
+        'col-xs-6',
       ];
 
       if (COLUMNS % columnCount !== 0) {
