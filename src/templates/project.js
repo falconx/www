@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Layout from '../components/Layout';
 import ProjectList from '../components/ProjectList';
@@ -299,6 +300,10 @@ const ProjectPage = props => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Matt Layton — {post.title}</title>
+      </Helmet>
+
       <S.Project>
         <S.Content>
           <Link to="/">Back to homepage</Link>
