@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matt Layton Portfolio</title>
+    <style type="text/css">
+
+    /* Todo: AUTOPREFIXER */
+
+    @import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Slab&display=swap');
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: #ffe359;
+    }
+
+    :root {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: 30px;
+      font-size: 1.5rem;
+      font-family: 'Roboto Slab', cursive;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::-webkit-scrollbar {
+      height: 20px;
+      width: 20px;
+    }
+     
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+    }
+     
+    body::-webkit-scrollbar-thumb {
+      background-color: #ffe359;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: 1;
+      margin: 0;
+    }
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      background: none;
+      color: currentColor;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    em {
+      font-style: normal;
+    }
+
+    a {
+      color: currentColor;
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid;
+    }
+
+    ul, ol, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    main > * + * {
+      margin-top: 140px;
+    }
+
+    .vh {
+      position: absolute;
+      left: -999vw;
+    }
+
+    .full-width {
+      width: calc(100vw - 20px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .fixed,
+    .skip {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      margin: 0;
+    }
+
+    .fixed a {
+      border: 0;
+    }
+
+    .section--intro {
+      font-family: 'Graduate', cursive;
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .section--overview {
+      font-size: 2rem;
+    }
+
+    .section--overview p + p {
+      margin-top: 70px;
+    }
+
+    .heading {
+      font-family: 'Graduate', cursive;
+    }
+
+    .heading__large {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .heading__regular {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .heading__underlined {
+      display: inline-block;
+      border-bottom: 2px solid;
+    }
+
+    .grid {
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1600px;
+      transform: skewY(-5deg);
+      margin: 0 auto;
+    }
+
+    .grid--item {
+      position: relative;
+      min-height: 500px;
+      background-color: #eee;
+    }
+
+    .grid--link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      border: 0;
+      background-color: #eee;
+
+      transition: all .5s ease-in-out;
+    }
+
+    .grid--link:hover {
+      margin: -20px;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+    }
+
+    .grid--link img {
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-areas:
+        '. title'
+        'date content';
+      grid-template-columns: 100px 1fr;
+      grid-gap: 20px;
+      width: calc(100% + 100px + 20px);
+      margin-left: calc((100px + 20px) * -1);
+    }
+
+    .timeline__no-title {
+      grid-template-areas:
+        'date content';
+    }
+
+    .timeline + .timeline {
+      margin-top: 70px;
+    }
+
+    .timeline + .timeline__no-title {
+      margin-top: 20px;
+    }
+
+    .timeline--title {
+      grid-area: title;
+    }
+
+    .timeline--content {
+      grid-area: content;
+      margin: 0;
+    }
+
+    .timeline--date {
+      grid-area: date;
+      font-size: 1rem;
+    }
+
+    .highlight {
+      background-color: #ffe359;
+      background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+    }
+
+    </style>
+  </head>
+  <body>
+    <main role="main">
+
+      <section class="section--intro">
+        <h1 class="heading heading__large">Luke Burrough's Portfolio</h1>
+      </section>
+
+      <div class="fixed">
+        <nav>
+          <ul>
+            <li>
+              <a href="./index.html">&larr; Me</a>
+            </li>
+            <li>
+              <a>Unheard</a>
+            </li>
+            <li>
+              <a>Melville's Bridge</a>
+            </li>
+            <li>
+              <a>Daybook</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <section>
+        <div class="full-width">
+          <div class="grid">
+            <div class="grid--item" style="margin-top: 30px;"></div>
+            <div class="grid--item" style="background: none; min-height: 0; grid-row: 2 / 4;">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie eu quam quis lobortis. Vestibdivum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae
+              </p>
+            </div>
+            <div class="grid--item" style="background: none; min-height: 0;">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie eu quam quis lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae
+              </p>
+            </div>
+            <div class="grid--item" style="grid-column: 1 / 3; min-height: 400px;"></div>
+            <div class="grid--item" style="grid-column: 2; grid-row: 1 / 3; margin-top: -120px;">
+              <a href="./grid--item.html" class="grid--link">
+                <img src="./luke-burroughs.png" alt="" />
+              </a>
+            </div>
+            <div class="grid--item"></div>
+            <div class="grid--item"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

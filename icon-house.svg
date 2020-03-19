@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="-4.21 -16.816 256 256">
+  <path fill="#FFD05C" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M8.287 90.184h231.006v129.152H8.287z"></path>
+  <path fill="#9E7B52" stroke="#231F20" stroke-width="1.5" stroke-miterlimit="10" d="M1.166 90.184l32.436-71.201h178.595l34.216 71.201z"></path>
+  <path fill="#CED6E1" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M33.328 108.903h44.51v59.151h-44.51z"></path>
+  <path fill="#FFF" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M39.574 115.928h32.212v15.031H39.574zM39.574 136.037h32.212v26.551H39.574z"></path>
+  <path fill="#CED6E1" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M169.659 108.903h44.508v59.151h-44.508z"></path>
+  <path fill="#FFF" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M175.904 115.928h32.212v15.031h-32.212zM175.904 136.037h32.212v26.551h-32.212z"></path>
+  <path fill="#CED6E1" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" d="M97.359 115.928h51.93v103.408h-51.93z"></path>
+  <circle fill="#304A60" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" cx="108.92" cy="168.292" r="3.24"></circle>
+  <path fill="#9E7B52" stroke="#231F20" stroke-width="1.5" stroke-miterlimit="10" d="M169.659.75h19.454v18.233h-19.454z"></path>
+</svg>
