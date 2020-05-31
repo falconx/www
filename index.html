@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Matt Layton Portfolio</title>
+    <title>Matt Layton | Norwich Freelance Web Developer</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Matt Layton Portfolio" />
+    <meta name="description" content="Matt Layton | Freelance web developer based in Norwich" />
+    <meta name="robots" content="index, follow" />
     <style>
-
-    /* Todo: AUTOPREFIXER */
 
     @import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Slab&display=swap');
 
@@ -30,8 +30,10 @@
       min-height: 100%;
       margin: 0;
       padding: 30px;
+      padding-bottom: 100px;
       font-size: 1.5rem;
       font-family: 'Roboto Slab', cursive;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -71,6 +73,7 @@
       color: currentColor;
       text-decoration: none;
       cursor: pointer;
+      word-break: break-all;
       border-bottom: 2px solid;
     }
 
@@ -80,9 +83,8 @@
       list-style: none;
     }
 
-    main {
-      max-width: 800px;
-      margin: 0 auto;
+    strong {
+      font-weight: normal;
     }
 
     main > * + *,
@@ -92,6 +94,11 @@
 
     article + article {
       margin-top: 200px;
+    }
+
+    .constrain {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .visually-hidden {
@@ -105,37 +112,14 @@
     }
 
     .full-width {
-      width: calc(200% + 60px);
-      max-width: calc(100vw - 20px);
-      margin-left: 50%;
-      padding: 0 30px;
-      transform: translateX(-50%);
-    }
-
-    .project-list {
-      position: fixed;
-      top: 170px;
-      right: 20px;
-      margin: 0;
-      font-size: 1.25rem;
-      text-align: right;
-      z-index: 10;
-    }
-
-    .project-list li + li {
-      margin-top: 10px;
-    }
-
-    .project-list a {
-      padding: 5px 10px;
-      border: 0;
-      background-color: rgba(255, 255, 255, .8);
-      transition: background-color .5s;
-    }
-
-    .project-list a:hover,
-    .project-list a:focus {
-      background-color: #ffe359;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      display: flex;
+      justify-content: center;
     }
 
     .section--intro {
@@ -169,35 +153,6 @@
     .heading__underlined {
       display: inline-block;
       border-bottom: 2px solid;
-    }
-
-    .project {
-      transform: skewY(-5deg);
-    }
-
-    .project > * {
-      margin: 30px 0;
-    }
-
-    .project a {
-      border: 0;
-    }
-
-    .project img  {
-      display: block;
-      height: auto;
-      width: 100%;
-      transition: all .5s ease;
-    }
-
-    .columns {
-      display: flex;
-      margin: 30px -15px;
-    }
-
-    .columns > * {
-      width: 50%;
-      margin: 0 15px;
     }
 
     .timeline {
@@ -243,43 +198,60 @@
       background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
     }
 
-    .daybook-icon-grid-1 {
-      display: grid;
-      grid-gap: 30px;
-      grid-template-columns: repeat(4, 1fr);
+    .projects > * + * {
+      margin-top: 2.5rem;
     }
 
-    .daybook-icon-grid-2 {
+    .features {
       display: flex;
+      text-align: center;
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    .features > * + * {
+      margin-left: 1rem;
+    }
+
+    .feature {
+      flex: 1 0 450px;
+      padding: 2rem;
+      border: 1px solid;
+      max-width: 450px;
+    }
+
+    .features::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+     
+    .features::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+    }
+     
+    .features::-webkit-scrollbar-thumb {
+      background-color: #111;
+    }
+
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      margin: 0 -30px;
-    }
-
-    .daybook-icon-grid-2 > * {
-      margin: 0 30px;
-    }
-
-    .daybook-icon {
-      display: flex;
       align-items: center;
-      justify-content: center;
+      margin: 0 auto 2rem;
     }
 
-    @media all and (max-width: 1620px) {
-      .project-list {
-        display: none;
-      }
+    .logos img {
+      height: 80px;
+    }
+
+    .logos .logo--gatsby {
+      height: 65px;
     }
 
     @media all and (max-width: 1100px) {
       article + article {
         margin-top: 100px;
-      }
-
-      .full-width {
-        width: 100%;
-        max-width: none;
-        padding: 0;
       }
 
       .heading__large {
@@ -288,18 +260,6 @@
 
       .heading__regular {
         font-size: 2rem;
-      }
-
-      .project {
-        transform: none;
-      }
-
-      .columns {
-        display: block;
-      }
-
-      .columns > * {
-        width: auto;
       }
 
       .timeline {
@@ -311,35 +271,49 @@
         width: 100%;
         margin-left: auto;
       }
+
+      .features {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .features > * + * {
+        margin-top: 1rem;
+        margin-left: 0;
+      }
+
+      .feature {
+        width: 100%;
+        max-width: 450px;
+      }
+
+      .logos {
+        margin-left: 2rem;
+        margin-right: 2rem;
+      }
+
+      .logos > * {
+        flex: 1 0 50%;
+        text-align: center;
+      }
     }
 
     </style>
   </head>
   <body>
-    <main>
+    <main role="main" class="constrain">
 
       <header class="section--intro">
         <h1 class="heading heading__large">Matt Layton</h1>
 
         <ul>
           <li>BSc Computer Science</li>
-          <li>Developer at Neontribe, Norwich UK</li>
-          <li>Freelancer</li>
+          <li>Developer at Neontribe, <strong>Norwich</strong> UK</li>
+          <li><strong>Freelancer</strong></li>
           <li>07783 439988</li>
         </ul>
       </header>
-
-      <nav class="project-list" aria-labelledby="nav-heading">
-        <h2 id="nav-heading" class="visually-hidden">Projects</h2>
-
-        <ul>
-          <li><a href="#allegiant-air">Allegiant Air</a></li>
-          <li><a href="#luke-burroughs">Luke Burroughs Portfolio</a></li>
-          <li><a href="#daybook">Daybook</a></li>
-          <li><a href="#melvilles-bridge">Melville's Bridge</a></li>
-          <li><a href="#eastern-attachments">Eastern Attachments</a></li>
-        </ul>
-      </nav>
 
       <section class="section--about" aria-labelledby="about-heading">
         <h2 id="about-heading" class="visually-hidden">About me</h2>
@@ -363,6 +337,62 @@
 
           <p>I've worked with a lot of programming languages over the years but feel most at home with JavaScript and React, which continue to evolve and excite me.</p>
         </div>
+      </section>
+
+      <section aria-labelledby="features-heading">
+        <h2 id="features-heading" class="visually-hidden">Why you should work with me</h2>
+
+        <div class="full-width">
+          <div>
+            <ul class="constrain logos">
+              <li><img src="./wp.svg" alt="WordPress" /></li>
+              <li><img src="./react.svg" alt="React" /></li>
+              <li><img src="./gatsby.svg" alt="Gatsby JS" class="logo--gatsby" /></li>
+              <li><img src="./nextjs.svg" alt="Next JS" /></li>
+            </ul>
+
+            <ul class="features" tabindex="0">
+              <li class="feature">
+                <h3 class="heading heading__underlined">Easily Manage Content with WordPress</h3>
+                <p>Your theme will be developed from scratch and completely <strong>bespoke</strong> to your needs, no pre-made themes.</p>
+                <p>Depending on your needs, <strong>WordPress</strong> may be used alongside a <strong>React</strong>-based JavaScript frontend.</p>
+              </li>
+              <li class="feature">
+                <h3 class="heading heading__underlined">Design with Purpose</h3>
+                <p>By working together we can design something which makes sense for your specific audience.</p>
+                <p>We can also work from your existing designs and, if necessary, iterate on them to create something fully <strong>responsive</strong> and <strong>accessible</strong>.</p>
+              </li>
+              <li class="feature">
+                <h3 class="heading heading__underlined">Accessible</h3>
+                <p>From design to code, I consider accessibility very important. By following Web Content Accessibility Guidelines (<strong>WCAG</strong>), your website will be easy to understand and navigate for all types of users.</p>
+              </li>
+              <li class="feature">
+                <h3 class="heading heading__underlined">Responsive</h3>
+                <p>Taking a <strong>mobile-first</strong> approach, your website will work seamlessly between different devices and viewports.</p>
+              </li>
+              <li class="feature">
+                <h3 class="heading heading__underlined">Performance</h3>
+                <p>Your website will be bespoke and not weighed down by features that you don't need.</p>
+                <p>Tools such as Google's Lighthouse will be used to measure how quickly your website takes to load.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="heading heading__regular">Projects</h2>
+
+        <ul class="projects">
+          <li>
+            <h3>Allegiant Air</h3>
+            <a href="https://www.allegiantair.com">https://www.allegiantair.com</a>
+          </li>
+          <li>
+            <h3>Luke Burroughs Portfolio</h3>
+            <a href="http://lukeburroughs.herokuapp.com">http://lukeburroughs.herokuapp.com</a>
+          </li>
+        </ul>
       </section>
 
       <section aria-labelledby="work-heading">
@@ -444,265 +474,6 @@
           <li>Nutrition</li>
           <li>Bodybuilding</li>
         </ul>
-      </section>
-
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" class="heading heading__regular" style="margin-bottom: 30px;">Projects</h2>
-
-        <article id="allegiant-air" aria-labelledby="allegiant-air-heading">
-          <h3 id="allegiant-air-heading" class="heading heading__large">Allegiant Air</h3>
-
-          <a href="https://www.allegiantair.com" target="blank">https://www.allegiantair.com</a>
-
-          <div class="full-width">
-            <div class="project">
-              <div class="columns">
-                <div>
-                  <p>Most of my working life has been spent on the Allegiant Air project.</p>
-
-                  <p>Based in Las Vegas, Allegiant Air are the ninth-largest commercial airline in the US.</p>
-                </div>
-                <div>
-                  <p>I've gone from working for them as a Drupal CMS engineer to building UI's with a JavaScript based MVC framework (JMVC) to finally using a modern JavaScript stack which includes ES6, Webpack, GraphQL and React.</p>
-                </div>
-              </div>
-
-              <div class="columns">
-                <div>
-                  <p>A design opportunity came when a new front page was needed. This is the version which got adopted:</p>
-                  <a href="./images/allegiant-1.png" target="blank" aria-label="View allegiant-1.png">
-                    <img src="./images/allegiant-1.png" alt="" />
-                  </a>
-                </div>
-                <div>
-                  <a href="./images/allegiant-2.png" target="blank" aria-label="View allegiant-2.png">
-                    <img src="./images/allegiant-2.png" alt="" style="width: 100%;" />
-                  </a>
-                </div>
-              </div>
-
-              <div class="columns">
-                <div>
-                  <h4>Reusable Component Architecture</h4>
-
-                  <p>My passion lies in building scalable components which allow for high composition but still work in isolation. For Allegiant, I maintain a component library, which we refer to as Boneyard &mdash; it provides the building blocks for all of our applications.</p>
-                </div>
-                <div>
-                  <p>Components include; buttons, form fields, layout, carousels and collapsible regions.</p>
-
-                  <p>Built in React, each component comes with a well considered prop API and is supported by a configurable theme which allows for heavy customisation.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article id="luke-burroughs" aria-labelledby="luke-burroughs-heading">
-          <h3 id="luke-burroughs-heading" class="heading heading__large">Luke Burroughs Portfolio</h3>
-
-          <a href="http://lukeburroughs.herokuapp.com" target="blank">http://lukeburroughs.herokuapp.com</a>
-
-          <div class="full-width">
-            <div class="project">
-              <div class="columns">
-                <div>
-                  <h4>The Brief</h4>
-
-                  <p>To create a highly visual site on all devices &mdash; rethinking the stacked nature of mobile content &mdash; to find a means of seamlessly integrating web, tablet and mobile experiences.</p>
-                </div>
-              </div>
-
-              <a href="./images/luke-burroughs-1.png" target="blank" aria-label="View luke-burroughs-1.png">
-                <img src="./images/luke-burroughs-1.png" alt="" />
-              </a>
-
-              <div class="columns">
-                <div>
-                  <a href="./images/luke-burroughs-4.png" target="blank" aria-label="View luke-burroughs-4.png">
-                    <img src="./images/luke-burroughs-4.png" alt="" />
-                  </a>
-
-                  <div class="grid--cell" style="grid-row: 5 / 7;">
-                    <p>Drone.io is a CI (Continuous Integration) platform which listens for pushes against a Git branch before, in our case, deploying them to a DigitalOcean droplet endpoint. This automation makes adding or modifying content simple &mdash; upload a few project images, update a configuration file to reference them, write descriptions etc, commit the changes and Drone.io will take care of the rest!</p>
-                    
-                    <p>Through the power of Node and Express, the optimised production files are served using Forever and an Upstart script ensuring that the site continues to serve even after disruptions or reboots on the host environment.</p>
-
-                    <p>Throughout the build, much consideration was taken to ensure that the mobile experience felt a core part of the end-product and not an add-on. This meant taking time to experiment with web fonts, scalable backgrounds and vectored glyphs as icons to ensure a crisper look on high resolution screens and an equal experience across all platforms.</p>
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <h4>The Technology</h4>
-
-                    <p>Initially starting as Jekyll development, the site was rewritten as a SPA (Single Page Application) in Google's AngularJS framework. Mostly, two factors lead to the decision to migrate platform; firstly, well, it's just newer so why not?</p>
-                    <p>More importantly though, being completely JavaScript driven meant we could avoid Ruby complexities such as the Ruby asset pipeline for production optimisations.</p>
-                  </div>
-
-                  <a href="./images/luke-burroughs-5.png" target="blank" aria-label="View luke-burroughs-5.png">
-                    <img src="./images/luke-burroughs-5.png" alt="" />
-                  </a>
-
-                  <p>&ldquo;We need to make mobile a core part of the end product &mdash; not an add-on feature.<br />
-                  Already having a knowledge of JavaScript, said optimisations, including script uglification, minification, contatination and image compressing have been set up as Gulp tasks&rdquo;</p>
-                </div>
-              </div>
-
-              <a href="./images/luke-burroughs-3.png" target="blank" aria-label="View luke-burroughs-3.png">
-                <img src="./images/luke-burroughs-3.png" alt="" />
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article id="daybook" aria-labelledby="daybook-heading">
-          <h3 id="daybook-heading" class="heading heading__large">Daybook</h3>
-
-          <div class="full-width">
-            <div class="project">
-              <div class="columns">
-                <div>
-                  <p>Daybook is a digital diary prototype aimed at helping to improve communications between people with learning disabilities and those that support and services.</p>
-
-                  <p>By learning some Adobe Illustrator basics I was able to design a logo, icons for topics, feelings and entry type.</p>
-                </div>
-                <a href="./images/daybook-2.jpg" target="blank" aria-label="View daybook-2.jpg">
-                  <img src="./images/daybook-2.jpg" alt="" />
-                </a>
-              </div>
-
-              <div class="daybook-icon-grid-1">
-                <div class="daybook-icon">
-                  <a href="./images/icon-people.svg" target="blank" aria-label="View icon-people.svg">
-                    <img src="./images/icon-people.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-learning.svg" target="blank" aria-label="View icon-learning.svg">
-                    <img src="./images/icon-learning.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-house.svg" target="blank" aria-label="View icon-house.svg">
-                    <img src="./images/icon-house.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-health.svg" target="blank" aria-label="View icon-health.svg">
-                    <img src="./images/icon-health.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-food.svg" target="blank" aria-label="View icon-food.svg">
-                    <img src="./images/icon-food.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-work.svg" target="blank" aria-label="View icon-work.svg">
-                    <img src="./images/icon-work.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-transport.svg" target="blank" aria-label="View icon-transport.svg">
-                    <img src="./images/icon-transport.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-activities.svg" target="blank" aria-label="View icon-activities.svg">
-                    <img src="./images/icon-activities.svg" alt="" />
-                  </a>
-                </div>
-              </div>
-
-              <p>Users were guided through a series of screens where they were able to choose from one of the available topics, a diary entry type (text, image or video) and whether the experience made them feel happy or sad.</p>
-
-              <div class="daybook-icon-grid-2">
-                <div class="daybook-icon">
-                  <a href="./images/icon-text.svg" target="blank" aria-label="View icon-text.svg">
-                    <img src="./images/icon-text.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-camera.svg" target="blank" aria-label="View icon-camera.svg">
-                    <img src="./images/icon-camera.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-video.svg" target="blank" aria-label="View icon-video.svg">
-                    <img src="./images/icon-video.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-happy.svg" target="blank" aria-label="View icon-happy.svg">
-                    <img src="./images/icon-happy.svg" alt="" />
-                  </a>
-                </div>
-                <div class="daybook-icon">
-                  <a href="./images/icon-sad.svg" target="blank" aria-label="View icon-sad.svg">
-                    <img src="./images/icon-sad.svg" alt="" />
-                  </a>
-                </div>
-              </div>
-
-              <div class="columns">
-                <div>
-                  <p>Since some of our users had never interacted with a touch device before, I felt it was important that interactive elements provided haptic feedback.</p>
-
-                  <p>Buttons achieved this by animating between two visual states; one with a drop shadow and one without.</p>
-                </div>
-
-                <a href="./images/buttons.png" target="blank" aria-label="View buttons.png">
-                  <img src="./images/buttons.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article id="melvilles-bridge" aria-labelledby="melvilles-bridge-heading">
-          <h3 id="melvilles-bridge-heading" class="heading heading__large">Melville's Bridge Logo Design</h3>
-
-          <div class="full-width">
-            <div class="project">
-              <div class="columns">
-                <div>
-                  <h4>Business Objective</h4>
-                  <p>Supporting housing for 16-25 year olds and helping them through transition to full independence &mdash; mainly, though not exclusively, focused on care leavers.</p>
-                </div>
-              </div>
-
-              <a href="./images/melvilles-bridge-1.png" target="blank" aria-label="View melvilles-bridge-1.png">
-                <img src="./images/melvilles-bridge-1.png" alt="" />
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article id="eastern-attachments" aria-labelledby="eastern-attachments-heading">
-          <h3 id="eastern-attachments-heading" class="heading heading__large">Eastern<br />Attachments</h3>
-
-          <div class="full-width">
-            <div class="project">
-              <a href="./images/eastern-attachments-1.png" target="blank" aria-label="View eastern-attachments-1.png">
-                <img src="./images/eastern-attachments-1.png" alt="" />
-              </a>
-
-              <div class="columns">
-                <div>
-                  <p>Eastern Attachments are manufacturers and suppliers of agricultural and construction loader, telehandler and forklift attachments.</p>
-
-                  <p>Their current website, developed but not designed by myself, has aged and no longer reflects the success of their business.</p>
-
-                  <p>I was asked to come up with a more modern design which considers best web practices, such as accessibility &mdash; which is not optimal in their current implementation.</p>
-                </div>
-
-                <a href="./images/eastern-attachments-2.png" target="blank" aria-label="View eastern-attachments-2.png">
-                  <img src="./images/eastern-attachments-2.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
       </section>
     </main>
   </body>
