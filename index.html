@@ -2,330 +2,333 @@
 <html lang="en">
   <head>
     <title>Matt Layton | Norwich Freelance Web Developer</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Matt Layton | Freelance web developer based in Norwich" />
+    <meta
+      name="description"
+      content="Matt Layton | Freelance web developer based in Norwich"
+    />
     <meta name="robots" content="index, follow" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <style>
+      @import url("https://fonts.googleapis.com/css?family=Graduate|Roboto+Slab&display=swap");
 
-    @import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Slab&display=swap');
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
 
-    *, *:before, *:after {
-      box-sizing: border-box;
-    }
+      ::selection {
+        background: #ffe359;
+      }
 
-    ::selection {
-      background: #ffe359;
-    }
+      :root {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        scroll-behavior: smooth;
+      }
 
-    :root {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
+      body {
+        min-height: 100%;
+        margin: 0;
+        padding: 30px;
+        padding-bottom: 100px;
+        font-size: 1.5rem;
+        font-family: "Roboto Slab", cursive;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-    body {
-      min-height: 100%;
-      margin: 0;
-      padding: 30px;
-      padding-bottom: 100px;
-      font-size: 1.5rem;
-      font-family: 'Roboto Slab', cursive;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+      body::-webkit-scrollbar {
+        height: 20px;
+        width: 20px;
+      }
 
-    body::-webkit-scrollbar {
-      height: 20px;
-      width: 20px;
-    }
-     
-    body::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
-    }
-     
-    body::-webkit-scrollbar-thumb {
-      background-color: #ffe359;
-    }
+      body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+      }
 
-    h1,
-    h2,
-    h3 {
-      font-size: inherit;
-      font-weight: inherit;
-      line-height: 1;
-      margin: 0;
-    }
+      body::-webkit-scrollbar-thumb {
+        background-color: #ffe359;
+      }
 
-    img {
-      height: auto;
-      max-width: 100%;
-    }
+      h1,
+      h2,
+      h3 {
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: 1;
+        margin: 0;
+      }
 
-    p {
-      margin: 0;
-    }
+      img {
+        height: auto;
+        max-width: 100%;
+      }
 
-    p + p {
-      margin-top: 1em;
-    }
+      p {
+        margin: 0;
+      }
 
-    em {
-      font-style: normal;
-    }
+      p + p {
+        margin-top: 1em;
+      }
 
-    a {
-      color: currentColor;
-      text-decoration: none;
-      cursor: pointer;
-      border-bottom: 2px solid;
-    }
+      em {
+        font-style: normal;
+      }
 
-    ul, ol, li {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+      a {
+        color: currentColor;
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid;
+      }
 
-    strong {
-      font-weight: normal;
-    }
+      ul,
+      ol,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-    main > * + *,
-    .section--about > * {
-      margin-top: 9rem;
-    }
+      strong {
+        font-weight: normal;
+      }
 
-    .constrain {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+      main > * + *,
+      .section--about > * {
+        margin-top: 9rem;
+      }
 
-    .visually-hidden {
-      position: absolute !important;
-      clip: rect(1px, 1px, 1px, 1px) !important;
-      padding: 0 !important;
-      border: 0 !important;
-      height: 1px !important;
-      width: 1px !important;
-      overflow: hidden !important;
-    }
+      .constrain {
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
-    .full-width {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      display: flex;
-      justify-content: center;
-    }
+      .visually-hidden {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px) !important;
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden !important;
+      }
 
-    .section--intro {
-      font-family: 'Graduate', cursive;
-      font-size: 1.25rem;
-      line-height: 1.5;
-    }
+      .full-width {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        display: flex;
+        justify-content: center;
+      }
 
-    .overview {
-      font-size: 2rem;
-    }
+      .section--intro {
+        font-family: "Graduate", cursive;
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
 
-    .overview p + p {
-      margin-top: 2.5em;
-    }
-
-    .heading {
-      font-family: 'Graduate', cursive;
-    }
-
-    .heading__large {
-      font-size: 4rem;
-      margin-bottom: 20px;
-    }
-
-    .heading__regular {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .heading__underlined {
-      line-height: 1.5;
-    }
-
-    .heading__underlined > span {
-      border-bottom: 2px solid;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-areas:
-        '. title'
-        'date content';
-      grid-template-columns: 100px 1fr;
-      grid-gap: 20px;
-      width: calc(100% + 100px + 20px);
-      margin-left: calc((100px + 20px) * -1);
-    }
-
-    .timeline__no-title {
-      grid-template-areas:
-        'date content';
-    }
-
-    .timeline + .timeline {
-      margin-top: 70px;
-    }
-
-    .timeline + .timeline__no-title {
-      margin-top: 20px;
-    }
-
-    .timeline--title {
-      grid-area: title;
-    }
-
-    .timeline--content {
-      grid-area: content;
-      margin: 0;
-    }
-
-    .timeline--date {
-      grid-area: date;
-      font-size: 1rem;
-    }
-
-    .highlight {
-      background-color: #ffe359;
-      background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
-    }
-
-    .projects > * + * {
-      margin-top: 2.5rem;
-    }
-
-    .projects a {
-      word-break: break-all;
-    }
-
-    .features {
-      display: flex;
-      text-align: center;
-      overflow-x: auto;
-      width: 100%;
-    }
-
-    .features > * + * {
-      margin-left: 1rem;
-    }
-
-    .feature {
-      flex: 1 0 auto;
-      padding: 2rem;
-      border: 1px solid;
-      max-width: 450px;
-    }
-
-    .feature > * + * {
-      margin-top: 1em;
-    }
-
-    .features::-webkit-scrollbar {
-      height: 10px;
-      width: 10px;
-    }
-     
-    .features::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
-    }
-     
-    .features::-webkit-scrollbar-thumb {
-      background-color: #111;
-    }
-
-    .logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 auto 2rem;
-    }
-
-    .logos > * {
-      text-align: center;
-    }
-
-    .logos img {
-      height: 80px;
-    }
-
-    .logos .logo--gatsby {
-      height: 60px;
-    }
-
-    @media all and (max-width: 1100px) {
       .overview {
-        font-size: 1.75rem;
-      }
-
-      .heading__large {
-        font-size: 2.5rem;
-      }
-
-      .heading__regular {
         font-size: 2rem;
       }
 
+      .overview p + p {
+        margin-top: 2.5em;
+      }
+
+      .heading {
+        font-family: "Graduate", cursive;
+      }
+
+      .heading__large {
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+
+      .heading__regular {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .heading__underlined {
+        line-height: 1.5;
+      }
+
+      .heading__underlined > span {
+        border-bottom: 2px solid;
+      }
+
       .timeline {
-        grid-template-columns: 1fr;
+        display: grid;
         grid-template-areas:
-          'title'
-          'date'
-          'content';
-        width: 100%;
-        margin-left: auto;
+          ". title"
+          "date content";
+        grid-template-columns: 100px 1fr;
+        grid-gap: 20px;
+        width: calc(100% + 100px + 20px);
+        margin-left: calc((100px + 20px) * -1);
+      }
+
+      .timeline__no-title {
+        grid-template-areas: "date content";
+      }
+
+      .timeline + .timeline {
+        margin-top: 70px;
+      }
+
+      .timeline + .timeline__no-title {
+        margin-top: 20px;
+      }
+
+      .timeline--title {
+        grid-area: title;
+      }
+
+      .timeline--content {
+        grid-area: content;
+        margin: 0;
+      }
+
+      .timeline--date {
+        grid-area: date;
+        font-size: 1rem;
+      }
+
+      .highlight {
+        background-color: #ffe359;
+        background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+      }
+
+      .projects > * + * {
+        margin-top: 2.5rem;
+      }
+
+      .projects a {
+        word-break: break-all;
       }
 
       .features {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        display: flex;
+        text-align: center;
+        overflow-x: auto;
+        width: 100%;
       }
 
       .features > * + * {
-        margin-top: 1rem;
-        margin-left: 0;
+        margin-left: 1rem;
       }
 
       .feature {
-        flex-basis: 0;
-        width: 100%;
+        flex: 1 0 auto;
+        padding: 2rem;
+        border: 1px solid;
         max-width: 450px;
       }
 
+      .feature > * + * {
+        margin-top: 1em;
+      }
+
+      .features::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+      }
+
+      .features::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+      }
+
+      .features::-webkit-scrollbar-thumb {
+        background-color: #111;
+      }
+
       .logos {
-        margin-left: 2rem;
-        margin-right: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto 2rem;
       }
 
       .logos > * {
-        flex: 1 0 50%;
+        text-align: center;
       }
-    }
 
+      .logos img {
+        height: 80px;
+      }
+
+      .logos .logo--gatsby {
+        height: 60px;
+      }
+
+      @media all and (max-width: 1100px) {
+        .overview {
+          font-size: 1.75rem;
+        }
+
+        .heading__large {
+          font-size: 2.5rem;
+        }
+
+        .heading__regular {
+          font-size: 2rem;
+        }
+
+        .timeline {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "title"
+            "date"
+            "content";
+          width: 100%;
+          margin-left: auto;
+        }
+
+        .features {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .features > * + * {
+          margin-top: 1rem;
+          margin-left: 0;
+        }
+
+        .feature {
+          flex-basis: 0;
+          width: 100%;
+          max-width: 450px;
+        }
+
+        .logos {
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        .logos > * {
+          flex: 1 0 50%;
+        }
+      }
     </style>
   </head>
   <body>
     <main role="main" class="constrain">
-
       <header class="section--intro">
         <h1 class="heading heading__large">Matt Layton</h1>
 
@@ -343,23 +346,39 @@
         <div class="overview">
           <p>Hi! I'm a web engineer with more than<br />10 years experience.</p>
 
-          <p>I'm passionate about creating <em class="highlight">beautiful user interfaces</em> which rigorously conform to web standards.</p>
+          <p>
+            I'm passionate about creating
+            <em class="highlight">beautiful user interfaces</em> which
+            rigorously conform to web standards.
+          </p>
 
-          <p>I care a lot about <em class="highlight">user experience</em> and making the web <em class="highlight">accessible</em> for everyone.</p>
+          <p>
+            I care a lot about <em class="highlight">user experience</em> and
+            making the web <em class="highlight">accessible</em> for everyone.
+          </p>
 
-          <p><em class="highlight">Got a project in mind? Get in touch at <a href="mailto:mattlayt@gmail.com">mattlayt@gmail.com</a></em></p>
+          <p>
+            <em class="highlight"
+              >Got a project in mind? Get in touch at
+              <a href="mailto:mattlayt@gmail.com">mattlayt@gmail.com</a></em
+            >
+          </p>
         </div>
       </section>
 
       <section aria-labelledby="features-heading">
-        <h2 id="features-heading" class="visually-hidden">Why you should work with me</h2>
+        <h2 id="features-heading" class="visually-hidden">
+          Why you should work with me
+        </h2>
 
         <div class="full-width">
           <div>
             <ul class="constrain logos">
               <li><img src="./wp.svg" alt="WordPress" /></li>
               <li><img src="./react.svg" alt="React" /></li>
-              <li><img src="./gatsby.svg" alt="Gatsby JS" class="logo--gatsby" /></li>
+              <li>
+                <img src="./gatsby.svg" alt="Gatsby JS" class="logo--gatsby" />
+              </li>
               <li><img src="./nextjs.svg" alt="Next JS" /></li>
             </ul>
 
@@ -368,27 +387,48 @@
                 <h3 class="heading heading__underlined">
                   <span>Design with Purpose</span>
                 </h3>
-                <p>By working together we can design something which makes sense for your specific audience.</p>
-                <p>We can also work from your existing designs and, if necessary, iterate on them to create something fully <strong>responsive</strong> and <strong>accessible</strong>.</p>
+                <p>
+                  By working together we can design something which makes sense
+                  for your specific audience.
+                </p>
+                <p>
+                  We can also work from your existing designs and, if necessary,
+                  iterate on them to create something fully
+                  <strong>responsive</strong> and <strong>accessible</strong>.
+                </p>
               </li>
               <li class="feature">
                 <h3 class="heading heading__underlined">
                   <span>Accessible</span>
                 </h3>
-                <p>From design to code, I consider accessibility very important. By following Web Content Accessibility Guidelines (<strong>WCAG</strong>), your website will be easy to understand and navigate for all types of users.</p>
+                <p>
+                  From design to code, I consider accessibility very important.
+                  By following Web Content Accessibility Guidelines
+                  (<strong>WCAG</strong>), your website will be easy to
+                  understand and navigate for all types of users.
+                </p>
               </li>
               <li class="feature">
                 <h3 class="heading heading__underlined">
                   <span>Responsive</span>
                 </h3>
-                <p>Taking a <strong>mobile-first</strong> approach, your website will work seamlessly between different devices and viewports.</p>
+                <p>
+                  Taking a <strong>mobile-first</strong> approach, your website
+                  will work seamlessly between different devices and viewports.
+                </p>
               </li>
               <li class="feature">
                 <h3 class="heading heading__underlined">
                   <span>Performance</span>
                 </h3>
-                <p>Being bespoke, your website won't be weighed down by features that you don't need.</p>
-                <p>Tools such as Google's Lighthouse will be used to measure how quickly your website takes to load.</p>
+                <p>
+                  Being bespoke, your website won't be weighed down by features
+                  that you don't need.
+                </p>
+                <p>
+                  Tools such as Google's Lighthouse will be used to measure how
+                  quickly your website takes to load.
+                </p>
               </li>
             </ul>
           </div>
@@ -396,48 +436,90 @@
       </section>
 
       <section aria-labelledby="detailed-about-heading">
-        <h2 id="detailed-about-heading" class="visually-hidden">More about me</h2>
+        <h2 id="detailed-about-heading" class="visually-hidden">
+          More about me
+        </h2>
 
-        <p>I've always been excited and inspired by the possibilities of the web and the reach it has. At this point I honestly can't imagine doing anything else.</p>
+        <p>
+          I've always been excited and inspired by the possibilities of the web
+          and the reach it has. At this point I honestly can't imagine doing
+          anything else.
+        </p>
 
-        <p>I specialise in front end development, paying particular attention to user experience, accessibility, semantics, component API design, and authoring CSS at scale.</p>
+        <p>
+          I specialise in front end development, paying particular attention to
+          user experience, accessibility, semantics, component API design, and
+          authoring CSS at scale.
+        </p>
 
-        <p>Working for Neontribe, I've been able to work on a multitude of social good projects as well as a couple of larger corporate ones, each with a unique set of challenges.</p>
+        <p>
+          Working for Neontribe, I've been able to work on a multitude of social
+          good projects as well as a couple of larger corporate ones, each with
+          a unique set of challenges.
+        </p>
 
-        <p>I've worked with a lot of programming languages over the years but feel most at home with JavaScript and React, which continue to evolve and excite me.</p>
+        <p>
+          I've worked with a lot of programming languages over the years but
+          feel most at home with JavaScript and React, which continue to evolve
+          and excite me.
+        </p>
       </section>
 
       <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" class="heading heading__regular">Select Works</h2>
+        <h2 id="projects-heading" class="heading heading__regular">
+          Select Works
+        </h2>
 
         <ul class="projects">
           <li>
             <h3>Parenting Smart</h3>
-            <a href="https://parentingsmart.place2be.org.uk" target="_blank">https://parentingsmart.place2be.org.uk</a>
+            <a href="https://parentingsmart.place2be.org.uk" target="_blank"
+              >https://parentingsmart.place2be.org.uk</a
+            >
           </li>
           <li>
             <h3>Great British Public Toilet Map</h3>
-            <a href="https://www.toiletmap.org.uk" target="_blank">https://www.toiletmap.org.uk</a>
+            <a href="https://www.toiletmap.org.uk" target="_blank"
+              >https://www.toiletmap.org.uk</a
+            >
           </li>
           <li>
             <h3>Allegiant Air</h3>
-            <a href="https://www.allegiantair.com" target="_blank">https://www.allegiantair.com</a>
+            <a href="https://www.allegiantair.com" target="_blank"
+              >https://www.allegiantair.com</a
+            >
           </li>
           <li>
-            <h3>Luke Burroughs Portfolio</h3>
-            <a href="http://lukeburroughs.herokuapp.com" target="_blank">http://lukeburroughs.herokuapp.com</a>
-          </li>
-         <li>
             <h3>Cabinville</h3>
-            <a href="https://cabinville.com" target="_blank">https://cabinville.com</a>
+            <a href="https://cabinville.com" target="_blank"
+              >https://cabinville.com</a
+            >
+          </li>
+          <li>
+            <h3>Zero to Finals (Members)</h3>
+            <a href="https://members.zerotofinals.com" target="_blank"
+              >https://members.zerotofinals.com</a
+            >
           </li>
         </ul>
       </section>
 
       <section aria-labelledby="work-heading">
-        <h2 id="work-heading" class="heading heading__regular">Work &amp; Experience</h2>
+        <h2 id="work-heading" class="heading heading__regular">
+          Work &amp; Experience
+        </h2>
 
         <ul>
+          <li class="timeline">
+            <div class="timeline--title">
+              <h3 class="heading heading__underlined">
+                <span>Instapro Group / My Builder</span>
+              </h3>
+            </div>
+            <p class="timeline--content">Senior Frontend Developer.</p>
+            <div class="timeline--date">Oct 2022 &mdash; Current</div>
+          </li>
+
           <li class="timeline">
             <div class="timeline--title">
               <h3 class="heading heading__underlined">
@@ -445,7 +527,7 @@
               </h3>
             </div>
             <p class="timeline--content">Web Engineer.</p>
-            <div class="timeline--date">June 2013 &mdash; Current</div>
+            <div class="timeline--date">June 2013 &mdash; May 2022</div>
           </li>
 
           <li class="timeline timeline__no-title">
@@ -464,14 +546,19 @@
                 <span>Banana Link</span>
               </h3>
             </div>
-            <p class="timeline--content">Programming tasks orientated around website development. Repeatedly went back on a voluntary basis.</p>
+            <p class="timeline--content">
+              Programming tasks orientated around website development.
+              Repeatedly went back on a voluntary basis.
+            </p>
             <div class="timeline--date">Dec 2008</div>
           </li>
         </ul>
       </section>
 
       <section aria-labelledby="education-heading">
-        <h2 id="education-heading" class="heading heading__regular">Education</h2>
+        <h2 id="education-heading" class="heading heading__regular">
+          Education
+        </h2>
 
         <ul>
           <li class="timeline">
@@ -480,7 +567,9 @@
                 <span>Long Stratton High School</span>
               </h3>
             </div>
-            <p class="timeline--content">GCSE English (C), English Lit (B), Art (A), Maths (C)</p>
+            <p class="timeline--content">
+              GCSE English (C), English Lit (B), Art (A), Maths (C)
+            </p>
             <div class="timeline--date">Sept 2001 &mdash; June 2006</div>
           </li>
 
@@ -490,7 +579,10 @@
                 <span>Norwich City College</span>
               </h3>
             </div>
-            <p class="timeline--content">BTEC ND IT Practitioners &mdash; Awarded a triple distinction and Norfolk county scholar</p>
+            <p class="timeline--content">
+              BTEC ND IT Practitioners &mdash; Awarded a triple distinction and
+              Norfolk county scholar
+            </p>
             <div class="timeline--date">Sept 2006 &mdash; June 2008</div>
           </li>
 
@@ -510,14 +602,18 @@
                 <span>University of Derby</span>
               </h3>
             </div>
-            <p class="timeline--content">BSc Computer Science &mdash; Awarded 2:1</p>
+            <p class="timeline--content">
+              BSc Computer Science &mdash; Awarded 2:1
+            </p>
             <div class="timeline--date">Sept 2010 &mdash; May 2013</div>
           </li>
         </ul>
       </section>
 
       <section aria-labelledby="hobbies-heading">
-        <h2 id="hobbies-heading" class="heading heading__regular">Hobbies &amp; Interests</h2>
+        <h2 id="hobbies-heading" class="heading heading__regular">
+          Hobbies &amp; Interests
+        </h2>
 
         <ul>
           <li>Board Games</li>
