@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iframe demo</title>
+    <script src="https://rota-filter-tool.vercel.app/js/iframeResizer.min.js"></script>
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+
+      /* Using min-width to set the width of the iFrame, works around an issue in iOS that can prevent the iFrame from sizing correctly. */
+      iframe {
+        width: 1px;
+        min-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      id="rota-tool"
+      src="https://rota-filter-tool.vercel.app"
+      frameborder="0"
+    ></iframe>
+
+    <script>
+      iFrameResize({ log: true, enablePublicMethods: true }, "#rota-tool");
+    </script>
+  </body>
+</html>
